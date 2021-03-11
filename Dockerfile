@@ -51,4 +51,6 @@ RUN python3 -m venv .venv &&\
 FROM botbase as lcbot
 COPY --from=builder /lc0/bin /lc0/bin
 COPY --from=botBuilder /lcbot /lcbot
+
+ENV PATH /lc0/bin:$PATH
 WORKDIR /lcbot
