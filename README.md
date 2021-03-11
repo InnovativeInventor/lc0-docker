@@ -14,6 +14,11 @@ otherwise, clone this repository then run
 
     docker-compose up lc0
 
+Building and running:
+```
+docker build -t lc0-docker .
+docker run --runtime nvidia --rm -it lc0-docker
+```
 
 ## Kubernetes
 

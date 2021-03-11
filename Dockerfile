@@ -6,7 +6,7 @@ RUN apt-get update &&\
 
 FROM lc0base as botbase
 RUN apt-get update &&\
-    apt-get install -y python3 &&\
+    apt-get install -y python3.8 &&\
     apt-get clean all
 
 FROM nvidia/cuda:10.0-cudnn7-devel as builder
@@ -40,10 +40,10 @@ CMD lc0client --user lc0docker --password lc0docker
 
 FROM builder as botBuilder
 RUN apt-get update &&\
-    apt-get install -y python3-venv
+    apt-get install -y python3.8-venv python3-venv
 RUN git clone https://github.com/careless25/lichess-bot.git /lcbot
 WORKDIR /lcbot
-RUN python3 -m venv .venv &&\
+RUN python3.8 -m venv .venv &&\
     . .venv/bin/activate &&\
     pip3 install wheel &&\
     pip3 install -r requirements.txt
